@@ -27,6 +27,16 @@ const ExpenseForm = () => {
     const dateChangeHandler = (event) => {
         setEnteredDate(event.target.value);
     }
+
+
+    //merging all the changehangler in a single handler 
+    const inputChangeHandler = (identifier,value) => {
+        if (identifier ==='amount')
+            setEnteredAmount(value)
+        else if (identifier === 'date')
+            setEnteredDate(value);
+        else setEnteredTitle(value)
+    }
     return (
       <form action="">
         <div className="new-expense__controls">
@@ -42,7 +52,7 @@ const ExpenseForm = () => {
               type="number"
               min="0.01"
               step="0.01"
-              onChange={amountChangeHandler}
+              onChange={(event)=>{inputChangeHandler('amount',event.target.value)}}
             />
           </div>
           <div className="new-expense__control">
