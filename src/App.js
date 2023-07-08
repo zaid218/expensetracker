@@ -1,4 +1,5 @@
 import Expenses from "./components/Expenses/Expenses"; //we can give here any name irrespective of the name of the function or the name of the file ...just keep in mind that component's nane should start with capital letter ..otherwise react will treat it as a tag
+import NewExpense from "./components/NewExpense/NewExpense";
 
 function App() {
   const expenses = [
@@ -24,7 +25,7 @@ function App() {
   ];
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <NewExpense/>
       <Expenses items ={expenses}  />
     </div>
   );
