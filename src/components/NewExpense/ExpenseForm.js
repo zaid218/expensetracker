@@ -3,11 +3,23 @@ import React,{useState} from 'react'
 const ExpenseForm = () => {
     const [enteredTitle, setEnteredTitle] = useState(''); {/*useState is not primarily for updating the component when using onChange on an input field. Instead, it is used to store the value in a separate variable that remains detached from the component's lifecycle. This ensures that the state persists and survives, independent of how often the component function executes. The main goal is to store the value in a variable that is not tied to the component's lifecycle, rather than focusing solely on updating the component.*/}
     const [enteredAmount, setEnteredAmount] = useState('');
-    const [enteredDate, setEnteredDate] = useState(""); {
-      /* strings are consistently used as the initial values for variables stored in the useState function. This is because when capturing the value of an input field through the onChange event, the retrieved value will always be a string. Even if the input field is intended to store a number or date, the value will be obtained as a string. Therefore, to ensure consistency, all states are initialized with strings. This accounts for the fact that input values are naturally received as strings, regardless of their underlying data type. */
-    }
+    const [enteredDate, setEnteredDate] = useState(""); {/* strings are consistently used as the initial values for variables stored in the useState function. This is because when capturing the value of an input field through the onChange event, the retrieved value will always be a string. Even if the input field is intended to store a number or date, the value will be obtained as a string. Therefore, to ensure consistency, all states are initialized with strings. This accounts for the fact that input values are naturally received as strings, regardless of their underlying data type. */}
+    //other way of using states by grouping them all
+    //the best approach is using multiple states ..but returing it as a function is also okk..but never use object method bcoz it sometimes fails 
+    //const [userInput, setUserInput] = useState({ enteredTitle: '', enteredAmount: '', enteredDate: '' })
     const titleChangeHandler = (event) => {
-      setEnteredTitle(event.target.value);
+        setEnteredTitle(event.target.value);
+        
+        //setUserInput({
+          //...userInput,
+              //enteredTitle:event.target.value
+        //  })
+
+        //function method is better but not better than using multiple states
+
+    // setUserInput((prevState)=>{
+    //       return {...prevState,enteredTitle:event.target.value};
+    //     })
     };
     const amountChangeHandler = (event) => {
         setEnteredAmount(event.target.value);
