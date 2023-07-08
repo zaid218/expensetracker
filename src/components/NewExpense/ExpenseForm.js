@@ -1,6 +1,6 @@
 import './ExpenseForm.css';
 import React, { useState } from 'react'
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [enteredTitle, setEnteredTitle] = useState(''); {/*useState is not primarily for updating the component when using onChange on an input field. Instead, it is used to store the value in a separate variable that remains detached from the component's lifecycle. This ensures that the state persists and survives, independent of how often the component function executes. The main goal is to store the value in a variable that is not tied to the component's lifecycle, rather than focusing solely on updating the component.*/ }
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState(""); {/* strings are consistently used as the initial values for variables stored in the useState function. This is because when capturing the value of an input field through the onChange event, the retrieved value will always be a string. Even if the input field is intended to store a number or date, the value will be obtained as a string. Therefore, to ensure consistency, all states are initialized with strings. This accounts for the fact that input values are naturally received as strings, regardless of their underlying data type. */ }
@@ -46,6 +46,7 @@ const ExpenseForm = () => {
             amount: enteredAmount,
             date: new Date(enteredDate)
         };
+        props.onSaveExpenseData(expenseData);
         setEnteredAmount('')
         setEnteredDate('')
         setEnteredTitle('')
@@ -84,12 +85,7 @@ const ExpenseForm = () => {
             />
           </div>
           <div className="new-expense__actions">
-            <button type="submit">Add Expense</button> //Adding a click listener
-            to the "add expense" button is not the recommended approach because
-            browsers and web pages have default behaviors. When a button with
-            the "submit" type is pressed inside a form, the form element emits a
-            "submit" event. It is better to listen for the "submit" event on the
-            form itself and execute a function when the form is submitted.
+                <button type="submit">Add Expense</button> {/*Adding a click listener to the "add expense" button is not the recommended approach because browsers and web pages have default behaviors. When a button with the "submit" type is pressed inside a form, the form element emits a "submit" event. It is better to listen for the "submit" event on the form itself and execute a function when the form is submitted.*/}
           </div>
         </div>
       </form>
