@@ -12,6 +12,6 @@ function ExpenseDate(props)
         <div className="expense-date__day">{day}</div>
       </div>
     );
-
+//this
 }
 export default ExpenseDate;

@@ -11,7 +11,7 @@ export default Card;
 
 // on your card component and then has an effect,
 
-// on your card component and then has an effect,
+// on your card component nd then has an effect,
 
 // we have to tweak the code in the card component.
 

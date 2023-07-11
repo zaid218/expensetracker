@@ -13,7 +13,7 @@ const ExpensesFilter = (props) => {
           id=""
           value={props.selected}
           onChange={filterChangeHandler}
-        >
+        > //two with same value may also create problem
           <option hidden value="0000"> Filter By Year</option>
           <option value="0000">ALL</option>
           <option value="2023">2023</option>

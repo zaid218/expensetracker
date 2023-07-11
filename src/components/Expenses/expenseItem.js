@@ -24,4 +24,4 @@ function XpenseItem(props) {
   );
 }
 export default XpenseItem;
-//now all items are lost bcoz we cant use custom components as wrapper of other types of componenet
+//now all items are lost bcoz we cant use custom components as wrapper of other types of compone
