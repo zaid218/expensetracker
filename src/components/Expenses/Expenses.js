@@ -1,5 +1,4 @@
 import { useState } from "react";
-import XcpenseItem from "./expenseItem"; //we can give here any name irrespective of the name of the function or the name of the file ...just keep in mind that component's nane should start with capital letter ..otherwise react will treat it as a tag
 import "./Expenses.css";
 import ExpensesFilter from "./ExpensesFilter.js";
 import Card from "../UI/Card";

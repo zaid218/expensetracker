@@ -11,20 +11,16 @@ function XpenseItem(props) {
     console.log(title)
   }
   return (
-    <Card className="expense-item">
-      <ExpenseDate date={props.date} />
-      <div className="expense-item__description">
-        <h2>{title}</h2>
-        <div className="expense-item__price">${props.amount}</div>
-      </div>
-      <button onClick={clickHandler}>Change title</button> {/*In React, we can add an
-      event listener to a JSX element, such as a button. We achieve this by
-      adding a special prop that begins with "on." Unlike other props that set
-      values for the element, these "on" props correspond to default events
-      exposed by React.This listener triggers a function when a click event
-      occurs. We define the function as a value for onClick, which is executed
-  when the click event happens.*/}
-    </Card>
+    <li>
+      <Card className="expense-item">
+        <ExpenseDate date={props.date} />
+        <div className="expense-item__description">
+          <h2>{title}</h2>
+          <div className="expense-item__price">${props.amount}</div>
+        </div>
+        <button onClick={clickHandler}>Change title</button>{" "}{/*In React, we can add an event listener to a JSX element, such as a button. We achieve this by adding a special prop that begins with "on." Unlike other props that set values for the element, these "on" props correspond to default events exposed by React.This listener triggers a function when a click event occurs. We define the function as a value for onClick, which is executed when the click event happens.*/}
+      </Card>
+    </li>
   );
 }
 export default XpenseItem;
