@@ -5,18 +5,32 @@ import ExpensesFilter from "./ExpensesFilter.js";
 import Card from "../UI/Card";
 function Expenses(props) {
   const [filterYear, setFilterYear] = useState("");
-  let filterInfoText = "2021,2022 & 2023 ";
-  const sub_expenses = props.items.filter((list) => {
-    if (filterYear === ''|| filterYear=='0000')
-      return true;
-      else return (list.date.getFullYear().toString() === filterYear)
-    
-  });
+  //let filterInfoText = "2021,2022 & 2023 ";
 
-  if (filterYear === "2021") filterInfoText = "2020,2022 & 2023";
-  else if (filterYear === "2022") filterInfoText = "2020,2021 & 2023";
-  else if (filterYear === "2023") filterInfoText = "2020,2021 & 2022";
-  else filterInfoText = "2021,2022 & 2023";
+  let expensecontent = (
+    <p style={{ marginLeft: "15px", color: "white" }}>NO Expenses found</p>
+  );
+  const sub_expenses = props.items.filter((list) => {
+    if (filterYear === "" || filterYear === "0000") return true;
+    else return list.date.getFullYear().toString() === filterYear;
+  });
+  if (sub_expenses.length > 0) {
+    expensecontent=sub_expenses.map((expens) => (
+      <XcpenseItem
+        key={expens.id}
+        title={expens.title}
+        amount={expens.amount}
+        date={expens.date}
+      />
+    ));
+  }
+
+  
+
+  // if (filterYear === "2021") filterInfoText = "2020,2022 & 2023";
+  // else if (filterYear === "2022") filterInfoText = "2020,2021 & 2023";
+  // else if (filterYear === "2023") filterInfoText = "2020,2021 & 2022";
+  // else filterInfoText = "2021,2022 & 2023";
 
   const filterChangeHandler = (selectedYear) => {
     setFilterYear(selectedYear);
@@ -29,18 +43,7 @@ function Expenses(props) {
           selected={filterYear}
           onChangeFilter={filterChangeHandler}
         />
-        <p style={{ color: "white", marginLeft: "15px" }}>
-          {" "}
-          data for years {filterInfoText} is hidden
-        </p>
-        {sub_expenses.map((expens) => (
-          <XcpenseItem
-            key={expens.id}
-            title={expens.title}
-            amount={expens.amount}
-            date={expens.date}
-          />
-        ))}
+        {expensecontent}
         {/*<XcpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}
