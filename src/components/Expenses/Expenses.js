@@ -3,27 +3,16 @@ import XcpenseItem from "./expenseItem"; //we can give here any name irrespectiv
 import "./Expenses.css";
 import ExpensesFilter from "./ExpensesFilter.js";
 import Card from "../UI/Card";
+import ExpensesList from "./ExpensesList";
 function Expenses(props) {
   const [filterYear, setFilterYear] = useState("");
   //let filterInfoText = "2021,2022 & 2023 ";
 
-  let expensecontent = (
-    <p style={{ marginLeft: "15px", color: "white" }}>NO Expenses found</p>
-  );
   const sub_expenses = props.items.filter((list) => {
     if (filterYear === "" || filterYear === "0000") return true;
     else return list.date.getFullYear().toString() === filterYear;
   });
-  if (sub_expenses.length > 0) {
-    expensecontent=sub_expenses.map((expens) => (
-      <XcpenseItem
-        key={expens.id}
-        title={expens.title}
-        amount={expens.amount}
-        date={expens.date}
-      />
-    ));
-  }
+  
 
   
 
@@ -43,7 +32,7 @@ function Expenses(props) {
           selected={filterYear}
           onChangeFilter={filterChangeHandler}
         />
-        {expensecontent}
+        <ExpensesList sub_expenses={ sub_expenses} />
         {/*<XcpenseItem
           title={props.items[0].title}
           amount={props.items[0].amount}
