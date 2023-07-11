@@ -1,7 +1,6 @@
-import { useState } from "react";
-import Expenses from "./components/Expenses/Expenses"; //we can give here any name irrespective of the name of the function or the name of the file ...just keep in mind that component's nane should start with capital letter ..otherwise react will treat it as a tag
+import React, { useState } from "react";
+import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
-
 const dummy_expenses = [
   {
     id: "e1",
@@ -24,14 +23,12 @@ const dummy_expenses = [
   },
 ];
 function App() {
-  const [expenses,updateExpenses]=useState(dummy_expenses)
-
-  const addExpenseHandler = expense => {
-    updateExpenses(prevExpenses => {
-      return ([...prevExpenses,expense])
-    })
-
-  }
+  const [expenses, updateExpenses] = useState(dummy_expenses);
+  const addExpenseHandler = (expense) => {
+    updateExpenses((prevExpenses) => {
+      return [...prevExpenses, expense];
+    });
+  };
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
@@ -39,7 +36,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
-
-//

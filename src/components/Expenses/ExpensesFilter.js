@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ExpensesFilter.css'
 const ExpensesFilter = (props) => {
   const filterChangeHandler = (event) => {
@@ -8,12 +8,7 @@ const ExpensesFilter = (props) => {
     <div className="expenses-filter">
       <div className="expenses-filter__control">
         <label>Your's Expenses</label>
-        <select
-          name=""
-          id=""
-          value={props.selected}
-          onChange={filterChangeHandler}
-        > //two with same value may also create problem
+        <select value={props.selected} onChange={filterChangeHandler}>
           <option hidden value="0000"> Filter By Year</option>
           <option value="0000">ALL</option>
           <option value="2023">2023</option>
